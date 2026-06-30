@@ -63,28 +63,28 @@ Donde:
 
 ---
 
-# [TÍTULO DEL PROYECTO]
+# [TRACEBOT]
 
-**Tipo:** [PPS | PF]  
-**Año:** [2026] — **Cuatrimestre:** [1C | 2C]  
+**Tipo:** [PF]  
+**Año:** [2026] — **Cuatrimestre:** [1C]  
 
 **Carrera:** Ingeniería Mecatrónica  
-**Materia / Curso:** [NOMBRE_DE_LA_MATERIA]  
-**Docente / Cátedra:** [NOMBRE_DOCENTE]  
-**Autor/es:** [APELLIDO, Nombre — Legajo] · [APELLIDO, Nombre — Legajo]
+**Materia / Curso:** [Proyecto en Ingenieria Mecatrónica]  
+**Docente / Cátedra:** [Ezequiel Blanca, Juan Ignacio Szombach, Cristian Lukaszewicz]  
+**Autor/es:** [ESPINOLA, Agustin — Legajo] · [SULLCA, Marco — Legajo]
 
 ---
 
 ## Introducción / Objetivo
 
 **Contexto (2–4 líneas):**  
-[Describir contexto general y necesidad.]
+[En industrias como la construcción, la manufactura y la logística, la automatización está transformando los procesos para mejorar la eficiencia y la precisión. El replanteo, que consiste en transferir planos digitales al suelo, es una etapa crítica que tradicionalmente se realiza mediante métodos manuales.]
 
 **Problema a resolver:**  
-[Describir el problema de forma concreta.]
+[A nivel nacional existe una importante brecha tecnológica, ya que el replanteo convencional sigue siendo manual, propenso a errores humanos, costoso y dependiente de soluciones importadas. Esta desconexión entre el diseño digital (CAD/BIM) y su ejecución en el terreno genera pérdida de precisión geométrica, retrasos en los tiempos de ejecución y un desperdicio significativo de recursos.]
 
 **Objetivo general:**  
-[Qué logra el sistema.]
+[Diseñar y desarrollar un prototipo de vehículo autónomo alimentado por baterías capaz de automatizar el proceso de marcado de trazados y layouts sobre superficies horizontales planas, a partir de la carga inalámbrica de archivos digitales (CAD/CSV), reduciendo los tiempos de ejecución y eliminando errores de marcado.]
 
 **Objetivos específicos (opcional):**
 - [Objetivo 1]
@@ -111,25 +111,23 @@ Donde:
 ## Brief
 
 **One-liner (1 frase):**  
-[Qué hace el proyecto + para quién + beneficio principal.]
+[Un vehículo autónomo de replanteo que automatiza la transferencia de planos digitales al suelo para los sectores de la construcción y logística, eliminando errores de marcado manual y optimizando los tiempos de obra.]
 
 **Elevator pitch (30 segundos):**  
-Este proyecto **[nombre del proyecto]** (tipo **[PPS/PF]**, **[AÑO] [CUATRIMESTRE]**) resuelve **[problema]** mediante **[solución]**.  
-Está orientado a **[público objetivo]** y permite **[beneficio medible]**.  
-Se implementa con **[tecnologías clave]** y se valida mediante **[pruebas/mediciones/demo]**.
+Este proyecto, [TraceBot] (PF, 2026 1er cuatrimestre) , resuelve la desconexión, ineficiencia y pérdida de precisión que ocurren al transferir planos digitales de forma manual al terreno. Mediante un vehículo autónomo móvil de tracción diferencial capaz de realizar trazados rectos y definidos controlados digitalmente , el sistema está orientado a industrias de la construcción, plantas industriales y centros logísticos. Permite reducir significativamente los tiempos de ejecución y garantizar una precisión en el trazado de ±3%. Se implementa con tecnologías clave como el microcontrolador ESP32-WROOM, encoders magnéticos AS5600, giroscopio AS5600 y posicionamiento mediante AprilTags. Se valida mediante una demostración funcional en superficies planas y niveladas de hasta 2×2 metros , verificando el resultado mediante el procesamiento de imágenes por cámara a bordo
 
 ### Problema
-- **Contexto:** [laboratorio / industria / hogar / aula / etc.]
-- **Dolor principal:** [qué falla / qué es lento / qué es costoso / qué es riesgoso]
-- **Impacto:** [tiempo, costo, errores, seguridad, calidad]
+- **Contexto:** [Obras en construcción, plantas industriales, manufactura y centros logísticos donde se realiza la transferencia de planos digitales al suelo (replanteo o marcado de layout).]
+- **Dolor principal:** [El replanteo continúa realizándose a nivel local con métodos tradicionales y puramente manuales , los cuales son lentos, propensos a errores humanos y altamente dependientes de costosas soluciones importadas.]
+- **Impacto:** [Provoca una desconexión crítica entre el diseño en CAD/BIM y la ejecución real , lo que genera retrasos imprevistos, la necesidad de realizar costosos retrabajos, desperdicio de recursos económicos y pérdida de precisión geométrica en la obra final.]
 
 ### Solución propuesta
 - **Qué hace (features):**
-  - [Funcionalidad 1]
-  - [Funcionalidad 2]
-  - [Funcionalidad 3]
-- **Cómo lo hace (alto nivel):** [sensor → control → actuador → visualización]
-- **Valor diferencial:** [por qué es mejor / distinto]
+  - [Navegación Autónoma: Se desplaza por sí mismo siguiendo trayectorias         complejas de manera controlada sobre un espacio de hasta 2×2 metros a        partir de un archivo digital de CAD o CSV cargado de forma inalámbrica.]
+  - [Marcado Preciso: Activa y desactiva de forma inteligente un sistema          físico de marcado con tinta para trazar líneas rectas continuas solo en      las zonas indicadas por el plano.]
+  - [Percepción y Seguridad: Detecta obstáculos en tiempo real en su              recorrido deteniendo el movimiento inmediatamente , evalúa la calidad        del trazo mediante una cámara a bordo e indica de forma sonora y             luminosa sus estados de operación (alertas de batería, tinta o fallas).]
+- **Cómo lo hace (alto nivel):** [El usuario carga el plano CAD que desea trazar a través de la interfaz; el software procesa el archivo, extrae la trayectoria que debe realizar el vehiculo y comienza a enviar las intrucciones secuencialmente al microcontrolador. Utilizando la cámara externa y los tags, el vehiculo logra reconocer su posición inicial. A medida que las intrucciones llegan al microcontrolador ESP32, este las ejecuta coordinando los motores de tracción para el desplazamiento y accionando la bomba de tinta cuando corresponde. En simultaneo una cámara a bordo visualiza e inspecciona el trazado permitiendo validar que se este realizando de forma correcta y con la calidad requerida]
+- **Valor diferencial:** [Representa una solución de desarrollo nacional y de bajo costo relativo ($200 USD en componentes críticos) frente a las herramientas comerciales importadas ($1500 USD por dia, Dusty Robotics) , unificando la precisión del diseño CAD con el terreno físico de forma accesible para el contexto local]
 
 ### Alcance
 **Incluye:**
